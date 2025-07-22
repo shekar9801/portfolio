@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --public-url / && cp -r assets/ dist/assets/",
-    "prebuild": "rm -rf dist"
+    "prebuild": "rm -rf dist",
+    "build": "parcel build index.html --public-url / && cp -r assets dist/"
   },
   "repository": {
     "type": "git",

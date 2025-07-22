@@ -395,19 +395,19 @@ function showSkills(skills) {
 function showProjects(projects) {
     let projectsContainer = document.querySelector("#work .box-container");
     let projectHTML = "";
-    const fallbackImage = "https://placehold.co/300x200"; // Reliable fallback image
-    const defaultImage = "/assets/images/projects/default.png"; // Local default image fallback
+    const fallbackImage = "https://placehold.co/300x200"; // Reliable external fallback
+    const defaultImage = "/assets/images/projects/default.png"; // Local default image
 
-    // Log expected image paths for debugging
+    // Log image paths for debugging
     console.log("Expected image paths:", projects.map(p => `/assets/images/projects/${p.image}.png`));
     console.log("Deployed image URLs:", projects.map(p => `https://jahnavi-profile.netlify.app/assets/images/projects/${p.image}.png`));
+    console.log("Default image path:", defaultImage);
 
     projects.slice(0, 10).filter(project => project.category !== "android").forEach(project => {
-        // Use project-specific image if available, otherwise fall back to default or external placeholder
         const imageSrc = project.image ? `/assets/images/projects/${project.image}.png` : defaultImage;
         projectHTML += `
         <div class="box tilt">
-            <img draggable="false" src="${imageSrc}" alt="${project.name}" onerror="console.error('Failed to load image: ${imageSrc} for project ${project.name}, switching to fallback'); this.src='${defaultImage}'; this.onerror=() => { this.src='${fallbackImage}'; this.onerror=null; };" />
+            <img draggable="false" src="${imageSrc}" alt="${project.name}" onerror="console.error('Failed to load image: ${imageSrc} for project ${project.name}, trying default'); this.src='${defaultImage}'; this.onerror=() => { console.error('Default image failed, using external fallback for ${project.name}'); this.src='${fallbackImage}'; this.onerror=null; };" />
             <div class="content">
                 <div class="tag">
                     <h3>${project.name}</h3>

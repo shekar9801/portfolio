@@ -89,6 +89,21 @@ async function fetchData(type = "skills") {
     return data;
 }
 
+// function showSkills(skills) {
+//     let skillsContainer = document.getElementById("skillsContainer");
+//     let skillHTML = "";
+//     skills.forEach(skill => {
+//         skillHTML += `
+//         <div class="bar">
+//               <div class="info">
+//                 <img src=${skill.icon} alt="skill" />
+//                 <span>${skill.name}</span>
+//               </div>
+//             </div>`
+//     });
+//     skillsContainer.innerHTML = skillHTML;
+// }
+
 function showSkills(skills) {
     let skillsContainer = document.getElementById("skillsContainer");
     let skillHTML = "";
@@ -96,10 +111,10 @@ function showSkills(skills) {
         skillHTML += `
         <div class="bar">
               <div class="info">
-                <img src=${skill.icon} alt="skill" />
+                <img src="${skill.icon}" alt="skill" style="width:48px; height:48px;" />
                 <span>${skill.name}</span>
               </div>
-            </div>`
+            </div>`;
     });
     skillsContainer.innerHTML = skillHTML;
 }

@@ -1,3 +1,35 @@
+// At the top of script.js
+import skillsData from './assets/data/skills.json' assert { type: 'json' };
+import projectsData from './assets/data/projects.json' assert { type: 'json' };
+
+async function fetchData(type = "skills") {
+    try {
+        let data;
+        if (type === "skills") {
+            data = skillsData; // Use imported data directly
+        } else {
+            data = projectsData; // Use imported data directly
+        }
+        return data;
+    } catch (error) {
+        console.error(`Error fetching ${type} data:`, error);
+        throw error;
+    }
+}
+
+fetchData().then(data => {
+    showSkills(data);
+}).catch(error => {
+    console.error("Failed to load skills:", error);
+});
+
+fetchData("projects").then(data => {
+    showProjects(data);
+}).catch(error => {
+    console.error("Failed to load projects:", error);
+});
+
+
 $(document).ready(function () {
 
     $('#menu').click(function () {

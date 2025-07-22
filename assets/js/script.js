@@ -290,32 +290,18 @@ const projectsData = [
     }
 ];
 
-async function fetchData(type = "skills") {
-    try {
-        let data;
-        if (type === "skills") {
-            data = skillsData; // Use embedded data directly
-        } else {
-            data = projectsData; // Use embedded data directly
+// Simplified fetchData function using embedded data
+function fetchData(type = "skills") {
+    return new Promise((resolve, reject) => {
+        try {
+            let data = type === "skills" ? skillsData : projectsData;
+            resolve(data);
+        } catch (error) {
+            console.error(`Error fetching ${type} data:`, error);
+            reject(error);
         }
-        return data;
-    } catch (error) {
-        console.error(`Error fetching ${type} data:`, error);
-        throw error;
-    }
+    });
 }
-
-fetchData().then(data => {
-    showSkills(data);
-}).catch(error => {
-    console.error("Failed to load skills:", error);
-});
-
-fetchData("projects").then(data => {
-    showProjects(data);
-}).catch(error => {
-    console.error("Failed to load projects:", error);
-});
 
 $(document).ready(function () {
     $('#menu').click(function () {
@@ -352,10 +338,10 @@ $(document).ready(function () {
         e.preventDefault();
         $('html, body').animate({
             scrollTop: $($(this).attr('href')).offset().top - 50,
-        }, 500, 'linear')
+        }, 500, 'linear');
     });
 
-    // <!-- emailjs to mail contact form data -->
+    // emailjs to mail contact form data
     $("#contact-form").submit(function (event) {
         emailjs.init("Q9oJ8KinwIctX2yBw");
 
@@ -370,22 +356,19 @@ $(document).ready(function () {
             });
         event.preventDefault();
     });
-    // <!-- emailjs to mail contact form data -->
 });
 
-document.addEventListener('visibilitychange',
-    function () {
-        if (document.visibilityState === "visible") {
-            document.title = "Portfolio | Jahnavi Reddy";
-            $("#favicon").attr("href", "assets/images/favicon.png");
-        }
-        else {
-            document.title = "Come Back To Portfolio";
-            // $("#favicon").attr("href", "assets/images/favhand.png");
-        }
-    });
+document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === "visible") {
+        document.title = "Portfolio | Jahnavi Reddy";
+        $("#favicon").attr("href", "assets/images/favicon.png");
+    } else {
+        document.title = "Come Back To Portfolio";
+        // $("#favicon").attr("href", "assets/images/favhand.png");
+    }
+});
 
-// <!-- typed js effect starts -->
+// typed js effect
 var typed = new Typed(".typing-text", {
     strings: ["frontend development", "backend development", "Machine Learning", "Data Science"],
     loop: true,
@@ -393,26 +376,6 @@ var typed = new Typed(".typing-text", {
     backSpeed: 25,
     backDelay: 500,
 });
-
-// <!-- typed js effect ends -->
-
-// Update fetch paths with error handling
-async function fetchData(type = "skills") {
-    try {
-        let response;
-        type === "skills"
-            ? response = await fetch("/assets/data/skills.json")
-            : response = await fetch("/assets/data/projects.json");
-        if (!response.ok) {
-            throw new Error(`Failed to fetch ${type} data: ${response.status} ${response.statusText}`);
-        }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error(`Error fetching ${type} data:`, error);
-        throw error; // Rethrow to allow calling functions to handle errors
-    }
-}
 
 function showSkills(skills) {
     let skillsContainer = document.getElementById("skillsContainer");
@@ -448,17 +411,16 @@ function showProjects(projects) {
           </div>
         </div>
       </div>
-    </div>`
+    </div>`;
     });
     projectsContainer.innerHTML = projectHTML;
 
-    // <!-- tilt js effect starts -->
+    // tilt js effect
     VanillaTilt.init(document.querySelectorAll(".tilt"), {
         max: 15,
     });
-    // <!-- tilt js effect ends -->
 
-    /* ===== SCROLL REVEAL ANIMATION ===== */
+    // scroll reveal animation
     const srtop = ScrollReveal({
         origin: 'top',
         distance: '80px',
@@ -466,10 +428,11 @@ function showProjects(projects) {
         reset: true
     });
 
-    /* SCROLL PROJECTS */
+    // scroll projects
     srtop.reveal('.work .box', { interval: 200 });
 }
 
+// Load skills and projects
 fetchData().then(data => {
     showSkills(data);
 }).catch(error => {
@@ -481,12 +444,6 @@ fetchData("projects").then(data => {
 }).catch(error => {
     console.error("Failed to load projects:", error);
 });
-
-// <!-- tilt js effect starts -->
-VanillaTilt.init(document.querySelectorAll(".tilt"), {
-    max: 15,
-});
-// <!-- tilt js effect ends -->
 
 // disable developer mode
 document.onkeydown = function (e) {
@@ -507,26 +464,24 @@ document.onkeydown = function (e) {
     }
 }
 
-// Start of Tawk.to Live Chat with Custom Configuration
+// Tawk.to Live Chat
 var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
 
-// Custom configuration for left positioning
 Tawk_API.customStyle = {
     visibility: {
         desktop: {
-            position: 'bl', // bottom-left
+            position: 'bl',
             xOffset: 20,
             yOffset: 20
         },
         mobile: {
-            position: 'bl', // bottom-left
+            position: 'bl',
             xOffset: 10,
             yOffset: 20
         }
     }
 };
 
-// Load Tawk.to script
 (function(){
     var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
     s1.async = true;
@@ -536,11 +491,8 @@ Tawk_API.customStyle = {
     s0.parentNode.insertBefore(s1, s0);
 })();
 
-// Additional customization after widget loads
 Tawk_API.onLoad = function(){
-    // Apply custom styling after load
     setTimeout(function() {
-        // Inject additional styles
         var customStyles = document.createElement('style');
         customStyles.innerHTML = `
             .tawk-button {
@@ -553,7 +505,6 @@ Tawk_API.onLoad = function(){
         `;
         document.head.appendChild(customStyles);
         
-        // Force left positioning
         var tawkElements = document.querySelectorAll('[id*="tawk"]');
         tawkElements.forEach(function(element) {
             element.style.left = '20px';
@@ -562,7 +513,6 @@ Tawk_API.onLoad = function(){
     }, 1000);
 };
 
-// Handle window resize to maintain left position
 Tawk_API.onChatMaximized = function(){
     setTimeout(function() {
         var tawkFrame = document.querySelector('#tawk-chat-widget-frame');
@@ -573,9 +523,7 @@ Tawk_API.onChatMaximized = function(){
     }, 100);
 };
 
-// End of Tawk.to Live Chat
-
-/* ===== SCROLL REVEAL ANIMATION ===== */
+/* SCROLL REVEAL ANIMATION */
 const srtop = ScrollReveal({
     origin: 'top',
     distance: '80px',
@@ -587,7 +535,6 @@ const srtop = ScrollReveal({
 srtop.reveal('.home .content h3', { delay: 200 });
 srtop.reveal('.home .content p', { delay: 200 });
 srtop.reveal('.home .content .btn', { delay: 200 });
-
 srtop.reveal('.home .image', { delay: 400 });
 srtop.reveal('.home .linkedin', { interval: 600 });
 srtop.reveal('.home .github', { interval: 800 });

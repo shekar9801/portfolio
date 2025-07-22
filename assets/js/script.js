@@ -396,10 +396,10 @@ function showProjects(projects) {
     let projectsContainer = document.querySelector("#work .box-container");
     let projectHTML = "";
     // Fallback image in case the project image is missing
-    const fallbackImage = "assets/images/projects/placeholder.png";
+    const fallbackImage = "/assets/images/projects/Wpaper.png";
     projects.slice(0, 10).filter(project => project.category != "android").forEach(project => {
         // Ensure the image path is correctly formatted; use fallback if image is missing
-        const imageSrc = project.image ? `assets/images/projects/${project.image}.png` : fallbackImage;
+        const imageSrc = project.image ? `/assets/images/projects/${project.image}.png` : fallbackImage;
         projectHTML += `
         <div class="box tilt">
             <img draggable="false" src="${imageSrc}" alt="${project.name}" onerror="this.src='${fallbackImage}'" />

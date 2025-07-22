@@ -79,14 +79,22 @@ var typed = new Typed(".typing-text", {
 });
 
 
-// Update fetch paths
+// Update fetch paths with error handling
 async function fetchData(type = "skills") {
-    let response
-    type === "skills"
-        ? response = await fetch("/assets/data/skills.json")
-        : response = await fetch("/assets/data/projects.json");
-    const data = await response.json();
-    return data;
+    try {
+        let response;
+        type === "skills"
+            ? response = await fetch("/assets/data/skills.json")
+            : response = await fetch("/assets/data/projects.json");
+        if (!response.ok) {
+            throw new Error(`Failed to fetch ${type} data: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(`Error fetching ${type} data:`, error);
+        throw error; // Rethrow to allow calling functions to handle errors
+    }
 }
 
 // <!-- typed js effect ends -->
@@ -175,10 +183,14 @@ function showProjects(projects) {
 
 fetchData().then(data => {
     showSkills(data);
+}).catch(error => {
+    console.error("Failed to load skills:", error);
 });
 
 fetchData("projects").then(data => {
     showProjects(data);
+}).catch(error => {
+    console.error("Failed to load projects:", error);
 });
 
 // <!-- tilt js effect starts -->
@@ -312,7 +324,6 @@ srtop.reveal('.about .content .tag', { delay: 200 });
 srtop.reveal('.about .content p', { delay: 200 });
 srtop.reveal('.about .content .box-container', { delay: 200 });
 srtop.reveal('.about .content .resumebtn', { delay: 200 });
-
 
 /* SCROLL SKILLS */
 srtop.reveal('.skills .container', { interval: 200 });

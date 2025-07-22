@@ -50,7 +50,7 @@ const skillsData = [
     },
     {
         "name": "MySQL",
-        "icon": "https://img.icons8.com/color/48/000000/mysql-logo.png"
+        "icon": "https://img.icons8.com/fluency/48/000000/mysql-logo.png"
     },
     {
         "name": "PostgreSQL",
@@ -361,10 +361,10 @@ $(document).ready(function () {
 document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === "visible") {
         document.title = "Portfolio | Jahnavi Reddy";
-        $("#favicon").attr("href", "assets/images/favicon.png");
+        $("#favicon").attr("href", "/assets/images/favicon.png");
     } else {
         document.title = "Come Back To Portfolio";
-        // $("#favicon").attr("href", "assets/images/favhand.png");
+        // $("#favicon").attr("href", "/assets/images/favhand.png");
     }
 });
 
@@ -407,7 +407,7 @@ function showProjects(projects) {
         const imageSrc = project.image ? `/assets/images/projects/${project.image}.png` : defaultImage;
         projectHTML += `
         <div class="box tilt">
-            <img draggable="false" src="${imageSrc}" alt="${project.name}" onerror="console.error('Failed to load image: ${imageSrc} for project ${project.name}, trying default'); this.src='${defaultImage}'; this.onerror=() => { console.error('Default image failed, using external fallback for ${project.name}'); this.src='${fallbackImage}'; this.onerror=null; };" />
+            <img draggable="false" src="${imageSrc}" alt="${project.name}" onerror="console.error('Failed to load image: ${imageSrc} for project ${project.name}, trying default'); this.src='${defaultImage}'; this.onerror=() => { console.error('Default image failed for ${project.name}, using external fallback'); this.src='${fallbackImage}'; this.onerror=null; };" />
             <div class="content">
                 <div class="tag">
                     <h3>${project.name}</h3>

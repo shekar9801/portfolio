@@ -86,12 +86,12 @@ const skillsData = [
     }
 ];
 
-// Embedded projects data
+// Embedded projects data (corrected image fields to match case sensitivity)
 const projectsData = [
     {
         "name": "Uber Clone",
         "desc": "Full-featured ride-sharing application clone with real-time booking, driver matching, and payment integration. Built with modern web technologies.",
-        "image": "uberclone",
+        "image": "Uberclone",
         "category": "mern",
         "links": {
             "view": "#",
@@ -101,7 +101,7 @@ const projectsData = [
     {
         "name": "Gemini AI Clone",
         "desc": "AI-powered conversational interface clone featuring natural language processing and intelligent responses. Interactive and user-friendly design.",
-        "image": "geminiclone",
+        "image": "Geminiclone",
         "category": "mern",
         "links": {
             "view": "#",
@@ -111,7 +111,7 @@ const projectsData = [
     {
         "name": "Air Quality Checker",
         "desc": "Real-time air quality monitoring application that provides current pollution levels, health recommendations, and environmental data visualization.",
-        "image": "airquality",
+        "image": "AirQuality",
         "category": "webdev",
         "links": {
             "view": "#",
@@ -121,7 +121,7 @@ const projectsData = [
     {
         "name": "LandVerse - Real Estate Platform",
         "desc": "Comprehensive real estate platform offering property listings, virtual tours, mortgage calculators, and seamless buyer-seller connections.",
-        "image": "landverse",
+        "image": "LandVerse",
         "category": "webdev",
         "links": {
             "view": "#",
@@ -131,7 +131,7 @@ const projectsData = [
     {
         "name": "Spotify Clone",
         "desc": "Music streaming application clone with playlist management, audio controls, search functionality, and responsive design for seamless music experience.",
-        "image": "spotifyclone",
+        "image": "Spotifyclone",
         "category": "mern",
         "links": {
             "view": "#",
@@ -141,7 +141,7 @@ const projectsData = [
     {
         "name": "Dynamic Travello",
         "desc": "Dynamic travel booking platform featuring destination discovery, itinerary planning, booking management, and travel recommendations.",
-        "image": "travello",
+        "image": "Travello",
         "category": "webdev",
         "links": {
             "view": "#",
@@ -151,7 +151,7 @@ const projectsData = [
     {
         "name": "Mental Health Chat Bot",
         "desc": "AI-powered mental health support chatbot providing emotional assistance, coping strategies, and mental wellness resources using machine learning.",
-        "image": "mentalhealth",
+        "image": "MentalHealth",
         "category": "ml",
         "links": {
             "view": "#",
@@ -161,7 +161,7 @@ const projectsData = [
     {
         "name": "Automatic Sorting System",
         "desc": "Intelligent automated sorting system using computer vision and machine learning algorithms to classify and organize objects efficiently.",
-        "image": "autosorting",
+        "image": "AutoSorting",
         "category": "ml",
         "links": {
             "view": "#",
@@ -171,7 +171,7 @@ const projectsData = [
     {
         "name": "Heart Disease Prediction",
         "desc": "Medical AI system that predicts heart disease risk using patient data, vital signs, and advanced machine learning classification algorithms.",
-        "image": "heartdisease",
+        "image": "HeartDisease",
         "category": "ml",
         "links": {
             "view": "#",
@@ -181,7 +181,7 @@ const projectsData = [
     {
         "name": "Machine Failure Detection",
         "desc": "Predictive maintenance system using IoT sensors and machine learning to detect equipment failures before they occur, reducing downtime.",
-        "image": "machinefailure",
+        "image": "MachineFailure",
         "category": "ml",
         "links": {
             "view": "#",
@@ -191,7 +191,7 @@ const projectsData = [
     {
         "name": "Iris Classification",
         "desc": "Classic machine learning project implementing various classification algorithms to identify iris flower species based on morphological features.",
-        "image": "iris",
+        "image": "Iris",
         "category": "ml",
         "links": {
             "view": "#",
@@ -201,7 +201,7 @@ const projectsData = [
     {
         "name": "Movie Recommendation System",
         "desc": "Personalized movie recommendation engine using collaborative filtering and content-based algorithms to suggest films based on user preferences.",
-        "image": "movierecommend",
+        "image": "MovieRecommend",
         "category": "ml",
         "links": {
             "view": "#",
@@ -211,7 +211,7 @@ const projectsData = [
     {
         "name": "House Price Prediction Model",
         "desc": "Real estate valuation system using regression analysis and market data to predict property prices based on location, features, and trends.",
-        "image": "houseprice",
+        "image": "HousePrice",
         "category": "ml",
         "links": {
             "view": "#",
@@ -221,7 +221,7 @@ const projectsData = [
     {
         "name": "Basic Jarvis Model",
         "desc": "Voice-activated AI assistant capable of performing basic tasks, answering queries, and executing commands using natural language processing.",
-        "image": "jarvis",
+        "image": "Jarvis",
         "category": "ml",
         "links": {
             "view": "#",
@@ -231,7 +231,7 @@ const projectsData = [
     {
         "name": "Fantasy - Dating Site",
         "desc": "A modern dating platform built using the MERN stack, featuring real-time chat, secure authentication, and profile matchmaking.",
-        "image": "fantasy",
+        "image": "Fantasy",
         "category": "mern",
         "links": {
             "view": "#",
@@ -251,7 +251,7 @@ const projectsData = [
     {
         "name": "Istem - Course Marketplace",
         "desc": "A student-centric platform built with ISTEM stack for buying and selling academic courses, providing a secure and user-friendly experience.",
-        "image": "istem",
+        "image": "Istem",
         "category": "mern",
         "links": {
             "view": "#",
@@ -271,7 +271,7 @@ const projectsData = [
     {
         "name": "Hubdub - Children's Medicine Site",
         "desc": "A specialized e-commerce platform for children's medicine, offering health tips, prescriptions, and age-appropriate medicine recommendations.",
-        "image": "habdab",
+        "image": "Habdab",
         "category": "mern",
         "links": {
             "view": "https://habdab.in/",
@@ -395,14 +395,15 @@ function showSkills(skills) {
 function showProjects(projects) {
     let projectsContainer = document.querySelector("#work .box-container");
     let projectHTML = "";
-    // Fallback image in case the project image is missing
-    const fallbackImage = "/assets/images/projects/Wpaper.png";
+    // Fallback image - using an online placeholder
+    const fallbackImage = "https://via.placeholder.com/300x200";
+    console.log("Checking image paths:", projects.map(p => `assets/images/projects/${p.image}.png`)); // Debug log
     projects.slice(0, 10).filter(project => project.category != "android").forEach(project => {
-        // Ensure the image path is correctly formatted; use fallback if image is missing
-        const imageSrc = project.image ? `/assets/images/projects/${project.image}.png` : fallbackImage;
+        const imageSrc = project.image ? `assets/images/projects/${project.image}.png` : fallbackImage;
+        // Add onerror with a flag to prevent infinite loops
         projectHTML += `
         <div class="box tilt">
-            <img draggable="false" src="${imageSrc}" alt="${project.name}" onerror="this.src='${fallbackImage}'" />
+            <img draggable="false" src="${imageSrc}" alt="${project.name}" onerror="if (!this.getAttribute('data-fallback-applied')) { console.log('Image failed to load: ${imageSrc}'); this.setAttribute('data-fallback-applied', 'true'); this.src='${fallbackImage}'; }" />
             <div class="content">
                 <div class="tag">
                     <h3>${project.name}</h3>
@@ -570,4 +571,4 @@ srtop.reveal('.experience .timeline .container', { interval: 400 });
 
 /* SCROLL CONTACT */
 srtop.reveal('.contact .container', { delay: 400 });
-srtop.reveal('.contact .container .form-group', { delay: 400 });
+srtop.reveal('.contact .container .form-group', { delay: 400});

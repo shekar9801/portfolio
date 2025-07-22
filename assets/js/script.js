@@ -1,14 +1,302 @@
-// At the top of script.js
-import skillsData from './assets/data/skills.json' assert { type: 'json' };
-import projectsData from './assets/data/projects.json' assert { type: 'json' };
+// Embedded skills data
+const skillsData = [
+    {
+        "name": "ReactJS",
+        "icon": "https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/000000/external-react-a-javascript-library-for-building-user-interfaces-logo-color-tal-revivo.png"
+    },
+    {
+        "name": "ExpressJS",
+        "icon": "https://img.icons8.com/fluency/48/000000/node-js.png"
+    },
+    {
+        "name": "NodeJS",
+        "icon": "https://img.icons8.com/color/48/000000/nodejs.png"
+    },
+    {
+        "name": "TailwindCSS",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/48px-Tailwind_CSS_Logo.png"
+    },
+    {
+        "name": "Bootstrap",
+        "icon": "https://img.icons8.com/color/48/000000/bootstrap.png"
+    },
+    {
+        "name": "HTML5",
+        "icon": "https://img.icons8.com/color/48/000000/html-5--v1.png"
+    },
+    {
+        "name": "CSS3",
+        "icon": "https://img.icons8.com/color/48/000000/css3.png"
+    },
+    {
+        "name": "JavaScript",
+        "icon": "https://img.icons8.com/color/48/000000/javascript--v1.png"
+    },
+    {
+        "name": "Java",
+        "icon": "https://img.icons8.com/color/48/000000/java-coffee-cup-logo--v1.png"
+    },
+    {
+        "name": "Python",
+        "icon": "https://img.icons8.com/color/48/000000/python--v1.png"
+    },
+    {
+        "name": "C++",
+        "icon": "https://img.icons8.com/color/48/000000/c-plus-plus-logo.png"
+    },
+    {
+        "name": "MongoDB",
+        "icon": "https://img.icons8.com/color/48/000000/mongodb.png"
+    },
+    {
+        "name": "MySQL",
+        "icon": "https://img.icons8.com/color/48/000000/mysql-logo.png"
+    },
+    {
+        "name": "PostgreSQL",
+        "icon": "https://img.icons8.com/color/48/000000/postgreesql.png"
+    },
+    {
+        "name": "Git VCS",
+        "icon": "https://img.icons8.com/color/48/000000/git.png"
+    },
+    {
+        "name": "GitHub",
+        "icon": "https://img.icons8.com/glyph-neue/48/ffffff/github.png"
+    },
+    {
+        "name": "Pandas",
+        "icon": "https://img.icons8.com/color/48/000000/pandas.png"
+    },
+    {
+        "name": "AWS",
+        "icon": "https://img.icons8.com/color/48/000000/amazon-web-services.png"
+    },
+    {
+        "name": "TensorFlow",
+        "icon": "https://img.icons8.com/color/48/000000/tensorflow.png"
+    },
+    {
+        "name": "Scikit-learn",
+        "icon": "https://icon.icepanel.io/Technology/svg/scikit-learn.svg"
+    },
+    {
+        "name": "Linux",
+        "icon": "https://img.icons8.com/color/48/000000/linux.png"
+    }
+];
+
+// Embedded projects data
+const projectsData = [
+    {
+        "name": "Uber Clone",
+        "desc": "Full-featured ride-sharing application clone with real-time booking, driver matching, and payment integration. Built with modern web technologies.",
+        "image": "uberclone",
+        "category": "mern",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/Uber-Clone"
+        }
+    },
+    {
+        "name": "Gemini AI Clone",
+        "desc": "AI-powered conversational interface clone featuring natural language processing and intelligent responses. Interactive and user-friendly design.",
+        "image": "geminiclone",
+        "category": "mern",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/Gemini-AI-Clone"
+        }
+    },
+    {
+        "name": "Air Quality Checker",
+        "desc": "Real-time air quality monitoring application that provides current pollution levels, health recommendations, and environmental data visualization.",
+        "image": "airquality",
+        "category": "webdev",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/Air_Quality_checker"
+        }
+    },
+    {
+        "name": "LandVerse - Real Estate Platform",
+        "desc": "Comprehensive real estate platform offering property listings, virtual tours, mortgage calculators, and seamless buyer-seller connections.",
+        "image": "landverse",
+        "category": "webdev",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/LandVerse"
+        }
+    },
+    {
+        "name": "Spotify Clone",
+        "desc": "Music streaming application clone with playlist management, audio controls, search functionality, and responsive design for seamless music experience.",
+        "image": "spotifyclone",
+        "category": "mern",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/Spotify-Clone"
+        }
+    },
+    {
+        "name": "Dynamic Travello",
+        "desc": "Dynamic travel booking platform featuring destination discovery, itinerary planning, booking management, and travel recommendations.",
+        "image": "travello",
+        "category": "webdev",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/Dynamic_Travello"
+        }
+    },
+    {
+        "name": "Mental Health Chat Bot",
+        "desc": "AI-powered mental health support chatbot providing emotional assistance, coping strategies, and mental wellness resources using machine learning.",
+        "image": "mentalhealth",
+        "category": "ml",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/Mental_health_Chat-Bot"
+        }
+    },
+    {
+        "name": "Automatic Sorting System",
+        "desc": "Intelligent automated sorting system using computer vision and machine learning algorithms to classify and organize objects efficiently.",
+        "image": "autosorting",
+        "category": "ml",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/automatic_sorting"
+        }
+    },
+    {
+        "name": "Heart Disease Prediction",
+        "desc": "Medical AI system that predicts heart disease risk using patient data, vital signs, and advanced machine learning classification algorithms.",
+        "image": "heartdisease",
+        "category": "ml",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/heart_disease_prediction"
+        }
+    },
+    {
+        "name": "Machine Failure Detection",
+        "desc": "Predictive maintenance system using IoT sensors and machine learning to detect equipment failures before they occur, reducing downtime.",
+        "image": "machinefailure",
+        "category": "ml",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/Machine_failure_detection"
+        }
+    },
+    {
+        "name": "Iris Classification",
+        "desc": "Classic machine learning project implementing various classification algorithms to identify iris flower species based on morphological features.",
+        "image": "iris",
+        "category": "ml",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/iris_classification"
+        }
+    },
+    {
+        "name": "Movie Recommendation System",
+        "desc": "Personalized movie recommendation engine using collaborative filtering and content-based algorithms to suggest films based on user preferences.",
+        "image": "movierecommend",
+        "category": "ml",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/movie_recommandition"
+        }
+    },
+    {
+        "name": "House Price Prediction Model",
+        "desc": "Real estate valuation system using regression analysis and market data to predict property prices based on location, features, and trends.",
+        "image": "houseprice",
+        "category": "ml",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/house-prediction-model"
+        }
+    },
+    {
+        "name": "Basic Jarvis Model",
+        "desc": "Voice-activated AI assistant capable of performing basic tasks, answering queries, and executing commands using natural language processing.",
+        "image": "jarvis",
+        "category": "ml",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/Ai-tool"
+        }
+    },
+    {
+        "name": "Fantasy - Dating Site",
+        "desc": "A modern dating platform built using the MERN stack, featuring real-time chat, secure authentication, and profile matchmaking.",
+        "image": "fantasy",
+        "category": "mern",
+        "links": {
+            "view": "#",
+            "code": "#"
+        }
+    },
+    {
+        "name": "WensPaper - News Site",
+        "desc": "A dynamic news portal delivering the latest headlines, curated articles, and trending stories with a responsive and accessible layout.",
+        "image": "Wpaper",
+        "category": "mern",
+        "links": {
+            "view": "#",
+            "code": "#"
+        }
+    },
+    {
+        "name": "Istem - Course Marketplace",
+        "desc": "A student-centric platform built with ISTEM stack for buying and selling academic courses, providing a secure and user-friendly experience.",
+        "image": "istem",
+        "category": "mern",
+        "links": {
+            "view": "#",
+            "code": "#"
+        }
+    },
+    {
+        "name": "Eagle Coders - Student Community",
+        "desc": "A dedicated website for a coding community of students, enabling event updates, resources sharing, and community building.",
+        "image": "Students",
+        "category": "mern",
+        "links": {
+            "view": "#",
+            "code": "#"
+        }
+    },
+    {
+        "name": "Hubdub - Children's Medicine Site",
+        "desc": "A specialized e-commerce platform for children's medicine, offering health tips, prescriptions, and age-appropriate medicine recommendations.",
+        "image": "habdab",
+        "category": "mern",
+        "links": {
+            "view": "https://habdab.in/",
+            "code": "https://github.com/manitejabayya/HubDub"
+        }
+    },
+    {
+        "name": "Child-Study - Educational App",
+        "desc": "An educational mobile app developed using React Native and Node.js, designed for kids aged 10–11 to learn computer science basics in a fun and engaging way.",
+        "image": "MobileApp",
+        "category": "android",
+        "links": {
+            "view": "#",
+            "code": "https://github.com/manitejabayya/Child_Study-App"
+        }
+    }
+];
 
 async function fetchData(type = "skills") {
     try {
         let data;
         if (type === "skills") {
-            data = skillsData; // Use imported data directly
+            data = skillsData; // Use embedded data directly
         } else {
-            data = projectsData; // Use imported data directly
+            data = projectsData; // Use embedded data directly
         }
         return data;
     } catch (error) {
@@ -29,9 +317,7 @@ fetchData("projects").then(data => {
     console.error("Failed to load projects:", error);
 });
 
-
 $(document).ready(function () {
-
     $('#menu').click(function () {
         $(this).toggleClass('fa-times');
         $('.navbar').toggleClass('nav-toggle');
@@ -85,7 +371,6 @@ $(document).ready(function () {
         event.preventDefault();
     });
     // <!-- emailjs to mail contact form data -->
-
 });
 
 document.addEventListener('visibilitychange',
@@ -100,7 +385,6 @@ document.addEventListener('visibilitychange',
         }
     });
 
-
 // <!-- typed js effect starts -->
 var typed = new Typed(".typing-text", {
     strings: ["frontend development", "backend development", "Machine Learning", "Data Science"],
@@ -110,6 +394,7 @@ var typed = new Typed(".typing-text", {
     backDelay: 500,
 });
 
+// <!-- typed js effect ends -->
 
 // Update fetch paths with error handling
 async function fetchData(type = "skills") {
@@ -128,33 +413,6 @@ async function fetchData(type = "skills") {
         throw error; // Rethrow to allow calling functions to handle errors
     }
 }
-
-// <!-- typed js effect ends -->
-
-// async function fetchData(type = "skills") {
-//     let response
-//     type === "skills" ?
-//         response = await fetch("skills.json")
-//         :
-//         response = await fetch("./projects/projects.json")
-//     const data = await response.json();
-//     return data;
-// }
-
-// function showSkills(skills) {
-//     let skillsContainer = document.getElementById("skillsContainer");
-//     let skillHTML = "";
-//     skills.forEach(skill => {
-//         skillHTML += `
-//         <div class="bar">
-//               <div class="info">
-//                 <img src=${skill.icon} alt="skill" />
-//                 <span>${skill.name}</span>
-//               </div>
-//             </div>`
-//     });
-//     skillsContainer.innerHTML = skillHTML;
-// }
 
 function showSkills(skills) {
     let skillsContainer = document.getElementById("skillsContainer");
@@ -210,7 +468,6 @@ function showProjects(projects) {
 
     /* SCROLL PROJECTS */
     srtop.reveal('.work .box', { interval: 200 });
-
 }
 
 fetchData().then(data => {
@@ -230,17 +487,6 @@ VanillaTilt.init(document.querySelectorAll(".tilt"), {
     max: 15,
 });
 // <!-- tilt js effect ends -->
-
-
-// pre loader start
-// function loader() {
-//     document.querySelector('.loader-container').classList.add('fade-out');
-// }
-// function fadeOut() {
-//     setInterval(loader, 500);
-// }
-// window.onload = fadeOut;
-// pre loader end
 
 // disable developer mode
 document.onkeydown = function (e) {

@@ -392,13 +392,15 @@ function showSkills(skills) {
     skillsContainer.innerHTML = skillHTML;
 }
 
+
+
 function showProjects(projects) {
     let projectsContainer = document.querySelector("#work .box-container");
     let projectHTML = "";
     projects.slice(0, 10).filter(project => project.category != "android").forEach(project => {
         projectHTML += `
         <div class="box tilt">
-      <img draggable="false" src="/assets/images/projects/${project.image}.png" alt="project" />
+      <img draggable="false" src="assets/images/projects/${project.image}.png" alt="project" />
       <div class="content">
         <div class="tag">
         <h3>${project.name}</h3>
@@ -431,6 +433,7 @@ function showProjects(projects) {
     // scroll projects
     srtop.reveal('.work .box', { interval: 200 });
 }
+
 
 // Load skills and projects
 fetchData().then(data => {

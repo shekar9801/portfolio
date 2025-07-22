@@ -77,17 +77,30 @@ var typed = new Typed(".typing-text", {
     backSpeed: 25,
     backDelay: 500,
 });
-// <!-- typed js effect ends -->
 
+
+// Update fetch paths
 async function fetchData(type = "skills") {
     let response
-    type === "skills" ?
-        response = await fetch("skills.json")
-        :
-        response = await fetch("./projects/projects.json")
+    type === "skills"
+        ? response = await fetch("assets/data/skills.json")
+        : response = await fetch("assets/data/projects.json");
+
     const data = await response.json();
     return data;
 }
+
+// <!-- typed js effect ends -->
+
+// async function fetchData(type = "skills") {
+//     let response
+//     type === "skills" ?
+//         response = await fetch("skills.json")
+//         :
+//         response = await fetch("./projects/projects.json")
+//     const data = await response.json();
+//     return data;
+// }
 
 // function showSkills(skills) {
 //     let skillsContainer = document.getElementById("skillsContainer");

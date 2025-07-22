@@ -2,7 +2,6 @@
   "name": "portfolio-jaanu-main",
   "version": "1.0.0",
   "scripts": {
-    "prebuild": "mkdir -p dist/assets/data && cp -r assets/data/* dist/assets/data/",
     "start": "parcel index.html",
     "build": "parcel build index.html --public-url ./"
   },
@@ -24,7 +23,7 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-      "live-server": "^1.2.2",
-      "parcel": "^2.15.4"
-    }
+    "live-server": "^1.2.2",
+    "parcel": "^2.15.4"
+  }
 }
